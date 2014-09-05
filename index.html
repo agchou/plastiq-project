@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" ng-app="plastiqApp">
+<head>
+    <meta charset="utf-8">
+    <title>Plastiq</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="app/css/normalize.css">
+    <link rel="stylesheet" href="app/css/animate.css">
+    <link rel="stylesheet" href="app/css/main.css">
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div ng-controller="PayeeCtrl">
+
+            <div class="payee-input">
+
+                <form class="payee-input-form" ng-submit="createPayee()">
+
+                    <span class="selectors">
+
+                        <span>
+                            <input type="radio" id="radio1" ng-model="business" ng-value="true" checked>
+                                <label class="payee-input-button" for="radio1">Business</label>
+                        </span>
+
+                        <span>
+                            <input type="radio" id="radio2" ng-model="business" ng-value="false">
+                                <label class="payee-input-button" for="radio2">Person</label>
+                        </span>
+
+                    </span>
+
+                    <input type="text" class="payee-input-field" placeholder={{placeholderText()}} ng-if="!business">
+
+                    <input type="text" class="payee-input-field" ng-places-autocomplete on-complete="createPayee(data)" result="data" placeholder={{placeholderText()}} ng-model="payeeName" ng-if="business">
+
+                    <button type="submit" class="payee-input-submit">
+                        <i class="fa fa-long-arrow-right fa-2x"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+            <ul class="payees">
+
+                <li ng-repeat="payee in payees">
+
+                    <div class="payee fadeInUp animated" ng-animate="'payee-animate'">
+
+                        <div class="payee-icon">
+
+                        </div>
+
+                        <div class="payee-info">
+
+                            <span>
+                                <p class="payee-info-name">{{payee.name}}</p>
+                                <p class="payee-info-address">{{payee.address}}</p>
+                            </span>
+
+                        </div>
+
+                        <div class="payee-submit" ng-if="payee.active">
+                            <i class="fa fa-dollar fa-3x"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/components/directives/ngPlacesAutocomplete.js"></script>
+    <script src="app/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'fonts';
+@import 'mixins';
+@import 'utils';
+@import 'payees';
+
+body {
+
+    // Darkened background color from PSD to make each payee pop a bit more
+
+    background-color: darken(#fbfbfb, 2%);
+}
+
+.container {
+    padding-top: 45px;
+
+    width: 1200px;
+
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Plastiq-Project",
+  "version": "0.0.0",
+  "description": "PLASTIQ UX ENGINEER TEST",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.7",
+    "gulp-sass": "~0.7.3",
+    "gulp-watch": "~0.7.0"
+    },
+  "scripts": {},
+  "author": "Aaron Chou <aarongchou@gmail.com> (http://agchou.com/)",
+  "license": "ISC"
+}

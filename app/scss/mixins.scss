@@ -1,0 +1,43 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+        -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+}
+
+@mixin border-radius-right($radius) {
+    -webkit-border-bottom-right-radius: $radius;
+        -moz-border-bottom-right-radius: $radius;
+        -ms-border-bottom-right-radius: $radius;
+            border-bottom-right-radius: $radius;
+
+    -webkit-border-top-right-radius: $radius;
+        -moz-border-top-right-radius: $radius;
+        -ms-border-top-right-radius: $radius;
+            border-top-right-radius: $radius;
+}
+
+@mixin border-radius-left($radius) {
+    -webkit-border-bottom-left-radius: $radius;
+        -moz-border-bottom-left-radius: $radius;
+        -ms-border-bottom-left-radius: $radius;
+            border-bottom-left-radius: $radius;
+
+    -webkit-border-top-left-radius: $radius;
+        -moz-border-top-left-radius: $radius;
+        -ms-border-top-left-radius: $radius;
+            border-top-left-radius: $radius;
+}
+
+@mixin box-inner-shadow($darken: 15%, $spread: 2px) {
+    -moz-box-shadow:    inset 0 0.75px $spread darken($light-grey, $darken);
+    -webkit-box-shadow: inset 0 0.75px $spread darken($light-grey, $darken);
+    box-shadow:         inset 0 0.75px $spread darken($light-grey, $darken);
+}
+
+@mixin box-outer-shadow($darken: 15%, $spread: 2px) {
+    -moz-box-shadow:    0 0.75px $spread darken($light-grey, $darken);
+    -webkit-box-shadow: 0 0.75px $spread darken($light-grey, $darken);
+    box-shadow:         0 0.75px $spread darken($light-grey, $darken);
+}
+
