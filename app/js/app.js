@@ -33,12 +33,7 @@ plastiqApp.controller('PayeeCtrl', ['$scope', 'PayeeService', function ($scope, 
     $scope.payee = {};
     $scope.business = true;
 
-    $scope.placeholderText = function () {
-
-        return $scope.business ?
-            'What business do you want to pay by card?' :
-            '';
-    };
+    $scope.placeholderText = 'What business do you want to pay by card?';
 
     $scope.togglePayeeType = function () {
 

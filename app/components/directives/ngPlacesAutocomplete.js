@@ -3,8 +3,7 @@ angular.module('ngPlacesAutocomplete', [])
     return {
       restrict: 'A',
       scope: {
-        onComplete: '&onComplete',
-        autocompleteActive: '='
+        onComplete: '&onComplete'
       },
 
       link: function (scope, element, attrs, controller) {
@@ -53,7 +52,7 @@ angular.module('ngPlacesAutocomplete', [])
 
           setTimeout(function () {
 
-            if (!scope.running) {
+            if (!scope.running || !scope.completed) {
 
               applyOnComplete(scope.result || {});
             }
