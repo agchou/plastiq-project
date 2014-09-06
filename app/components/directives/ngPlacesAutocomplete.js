@@ -12,7 +12,10 @@ angular.module('ngPlacesAutocomplete', [])
 
         scope.submit = false;
         scope.completed = false;
-        scope.result;
+        scope.running = false;
+        scope.result = null;
+
+        scope.form = element.parent();
 
         // Initiate autocomplete
 
@@ -22,6 +25,7 @@ angular.module('ngPlacesAutocomplete', [])
 
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
 
+          scope.running = true;
           scope.result = autocomplete.getPlace();
 
           // If enter key was pressed before select and place was selected, applyOnComplete
@@ -29,33 +33,30 @@ angular.module('ngPlacesAutocomplete', [])
 
           if (scope.submit) {
 
-            applyOnComplete({ data: scope.result });
-            scope.submit = false;
-
+            applyOnComplete(scope.result || {});
           } else {
 
             scope.completed = true;
-
           }
+
+          scope.running = false;
         });
 
-        element.on('keydown', function (e) {
+        // Override form submit event
 
-          if (e.keyCode === 13) {
+        scope.form.bind('submit', function (e) {
 
-            if (scope.completed) {
+          scope.submit = true;
 
-              applyOnComplete({ data: scope.result });
-              scope.completed = false;
+          // Hack for Google.autocomplete to start and/or finish
 
-            } else {
+          setTimeout(function () {
 
-              scope.submit = true;
+            if (!scope.running) {
 
+              applyOnComplete(scope.result || {});
             }
-
-            e.preventDefault();
-          }
+          }, 200)
         })
 
         function applyOnComplete(data) {
@@ -64,13 +65,33 @@ angular.module('ngPlacesAutocomplete', [])
           // This overrides preventing the result to be entered into input after
           // enter is pushed.
 
-          element.one('blur', function () {
-            element.val('');
-          })
+          element.one('blur', function (e) {
 
-          scope.onComplete(data);
+            // Hack around if user submits with enter key, does not shift focus, enters new object,
+            // and submits with click. Unlikely but possible.
+
+            if (!e.relatedTarget || !e.relatedTarget.classList.contains("payee-input-submit")) {
+
+              element.val('');
+            }
+          });
+
+          if (!data.name) {
+
+            data.name = element.val();
+          }
+
+          scope.onComplete({ data: data });
+
+          scope.completed = false;
+          scope.submit = false;
+          scope.result = null;
 
           scope.$apply();
+
+          setTimeout(function () {
+            element.val('');
+          }, 0)
         }
       }
     };

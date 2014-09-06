@@ -48,10 +48,10 @@ plastiqApp.controller('PayeeCtrl', ['$scope', 'PayeeService', function ($scope, 
 
         data = data || {};
 
-        var inputField = document.getElementsByClassName('payee-input-field')[0];
+        if (!data.name) return;
 
         $scope.payee = {
-            name: data.name || inputField.value,
+            name: data.name,
             address: data.formatted_address || 'Address not provided.',
             type: $scope.business ? 'business' : 'person'
         }
@@ -70,6 +70,5 @@ plastiqApp.controller('PayeeCtrl', ['$scope', 'PayeeService', function ($scope, 
         // Resets value of input and payee on create success
 
         $scope.payee = {};
-        inputField.value = '';
     };
 }]);
