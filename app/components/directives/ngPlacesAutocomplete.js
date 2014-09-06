@@ -3,7 +3,8 @@ angular.module('ngPlacesAutocomplete', [])
     return {
       restrict: 'A',
       scope: {
-        onComplete: '&onComplete'
+        onComplete: '&onComplete',
+        autocompleteActive: '='
       },
 
       link: function (scope, element, attrs, controller) {

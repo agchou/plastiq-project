@@ -19,7 +19,7 @@
 
             <div class="payee-input">
 
-                <form class="payee-input-form">
+                <form class="payee-input-form" ng-submit="createPayee">
 
                     <span class="selectors">
 
@@ -37,7 +37,7 @@
 
                     <input type="text" class="payee-input-field" placeholder={{placeholderText()}} ng-if="!business">
 
-                    <input type="text" class="payee-input-field" ng-places-autocomplete on-complete="createPayee(data)" result="data" placeholder={{placeholderText()}} ng-model="payeeName" ng-if="business">
+                    <input type="text" class="payee-input-field" ng-places-autocomplete on-complete="createPayee(data)" result="data" placeholder={{placeholderText()}} autocomplete-active="business" ng-if="business">
 
                     <button type="submit" class="payee-input-submit">
                         <i class="fa fa-long-arrow-right fa-2x"></i>
