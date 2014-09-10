@@ -25,45 +25,48 @@
  * Payee Input Styles
  */
 .payee-input {
+  position: relative;
   height: 45px; }
 
 .payee-input-form {
   height: 100%; }
 
-input[type="radio"] {
+.payee-input-selectors input[type="radio"] {
   display: none; }
+  .payee-input-selectors input[type="radio"]:checked + label {
+    color: white;
+    background-color: #00a1e1;
+    -moz-box-shadow: inset 0 0.75px 3px #888888;
+    -webkit-box-shadow: inset 0 0.75px 3px #888888;
+    box-shadow: inset 0 0.75px 3px #888888; }
 
 .payee-input-button {
-  display: inline-block;
   float: left;
-  background-color: #eeeeee;
-  color: #aaaaaa;
-  text-align: center;
-  line-height: 47.5px;
-  width: 105px;
-  height: 100%;
-  -moz-box-shadow: inset 0 0.75px 2px #c8c8c8;
-  -webkit-box-shadow: inset 0 0.75px 2px #c8c8c8;
-  box-shadow: inset 0 0.75px 2px #c8c8c8; }
-
-span:first-child > .payee-input-button {
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-bottom-left-radius: 4px;
-  -ms-border-bottom-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-top-left-radius: 4px;
-  -ms-border-top-left-radius: 4px;
-  border-top-left-radius: 4px; }
-
-input[type="radio"]:checked + .payee-input-button {
-  color: white;
-  background-color: #00a1e1;
-  -moz-box-shadow: inset 0 0.75px 3px #888888;
-  -webkit-box-shadow: inset 0 0.75px 3px #888888;
-  box-shadow: inset 0 0.75px 3px #888888; }
+  height: 100%; }
+  .payee-input-button label {
+    display: inline-block;
+    float: left;
+    background-color: #eeeeee;
+    color: #aaaaaa;
+    text-align: center;
+    line-height: 45px;
+    width: 105px;
+    height: 100%;
+    -moz-box-shadow: inset 0 0.75px 2px #c8c8c8;
+    -webkit-box-shadow: inset 0 0.75px 2px #c8c8c8;
+    box-shadow: inset 0 0.75px 2px #c8c8c8; }
+  .payee-input-button:first-child label {
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-bottom-left-radius: 4px;
+    -ms-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-top-left-radius: 4px;
+    -ms-border-top-left-radius: 4px;
+    border-top-left-radius: 4px; }
 
 .payee-input-field {
+  float: left;
   border: 0;
   padding: 0;
   padding-left: 20px;
@@ -72,12 +75,13 @@ input[type="radio"]:checked + .payee-input-button {
   -moz-box-shadow: inset 0 0.75px 2px #c8c8c8;
   -webkit-box-shadow: inset 0 0.75px 2px #c8c8c8;
   box-shadow: inset 0 0.75px 2px #c8c8c8; }
-
-.payee-input-field:focus {
-  outline: 0; }
+  .payee-input-field:focus {
+    outline: 0; }
 
 .payee-input-submit {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   border: 0;
   padding: 0;
   height: 100%;
@@ -129,7 +133,9 @@ input[type="radio"]:checked + .payee-input-button {
     color: white; }
 
 .payee-icon {
-  float: left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   width: 90px;
   height: 100%;
   background-image: url('http://placehold.it/90x90');
@@ -143,7 +149,8 @@ input[type="radio"]:checked + .payee-input-button {
   border-top-left-radius: 2px; }
 
 .payee-info {
-  display: inline-block;
+  position: absolute;
+  left: 90px;
   padding-left: 25px;
   height: 100%;
   line-height: 90px; }
@@ -165,7 +172,9 @@ input[type="radio"]:checked + .payee-input-button {
   color: #aaaaaa; }
 
 .payee-submit {
-  float: right;
+  position: absolute;
+  right: 0px;
+  top: 0px;
   width: 90px;
   height: 100%;
   border-left: 1px solid #eeeeee;
@@ -179,7 +188,7 @@ input[type="radio"]:checked + .payee-input-button {
   -ms-border-top-right-radius: 2px;
   border-top-right-radius: 2px; }
   .payee-submit i {
-    position: relative;
+    position: absolute;
     top: 20px;
     left: 30px; }
 

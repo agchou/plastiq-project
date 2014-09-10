@@ -89,9 +89,7 @@ angular.module('ngPlacesAutocomplete', [])
 
           scope.$apply();
 
-          setTimeout(function () {
-            element.val('');
-          }, 0)
+          element.val('');
         }
       }
     };

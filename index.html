@@ -21,19 +21,19 @@
 
                 <form class="payee-input-form">
 
-                    <span class="selectors">
+                    <div class="payee-input-selectors">
 
-                        <span>
+                        <div class="payee-input-button">
                             <input type="radio" id="radio1" ng-model="business" ng-value="true" checked>
-                                <label class="payee-input-button" for="radio1">Business</label>
-                        </span>
+                                <label for="radio1">Business</label>
+                        </div>
 
-                        <span>
+                        <div class="payee-input-button">
                             <input type="radio" id="radio2" ng-model="business" ng-value="false">
-                                <label class="payee-input-button" for="radio2">Person</label>
-                        </span>
+                                <label for="radio2">Person</label>
+                        </div>
 
-                    </span>
+                    </div>
 
                     <input type="text" class="payee-input-field" ng-if="!business">
 
